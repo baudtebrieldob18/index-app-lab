@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再读 · 华体会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.7;
+            color: #1e242b;
+            background-color: #f7f9fc;
+        }
+
+        .hero {
+            background: #0b121c;
+            color: #e7ecf3;
+            padding: 4rem 2rem 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2rem;
+            left: -2rem;
+            width: 14rem;
+            height: 14rem;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: #f0e6d3;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #b7c2d0;
+            max-width: 600px;
+            margin: 0 auto 0.5rem auto;
+            font-weight: 300;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.2rem;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 4rem 1.8rem;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2.4rem 2rem 2.8rem 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .article-title {
+            font-size: 1.65rem;
+            font-weight: 500;
+            color: #10151d;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .meta-line {
+            font-size: 0.85rem;
+            color: #7b8799;
+            margin: 0.3rem 0 1.6rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+        }
+
+        .meta-line span {
+            background: #f0f3f8;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+        }
+
+        .dropcap {
+            font-size: 3.2rem;
+            font-weight: 400;
+            float: left;
+            line-height: 1;
+            margin: 0.2rem 0.6rem 0 0;
+            color: #a37c4b;
+            font-family: "Times New Roman", Georgia, serif;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            font-size: 1rem;
+            color: #1f2833;
+        }
+
+        .highlight-link {
+            color: #a37c4b;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(163, 124, 75, 0.25);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .highlight-link:hover {
+            color: #7d5f38;
+            border-bottom: 1px solid #7d5f38;
+        }
+
+        .inset-quote {
+            background: #f3f6fb;
+            border-left: 4px solid #a37c4b;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1.8rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+        }
+
+        .inset-quote p {
+            margin-bottom: 0.2rem;
+            color: #2a3441;
+        }
+
+        .inset-quote .quote-source {
+            font-size: 0.85rem;
+            color: #68778c;
+            margin-top: 0.6rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.8rem;
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        .feature-item {
+            background: #f7fafd;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #e9edf2;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1a2533;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #3c4a5a;
+        }
+
+        .visit-note {
+            margin-top: 2.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e6ed;
+            font-size: 1rem;
+            color: #1f2833;
+        }
+
+        .visit-note strong {
+            color: #10151d;
+        }
+
+        .faq-mini {
+            margin-top: 2rem;
+            background: #f9fbfd;
+            padding: 1.4rem 1.6rem;
+            border-radius: 16px;
+            border: 1px solid #e6ecf3;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1f2937;
+            padding: 0.3rem 0;
+            list-style: none;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: "▸ ";
+            color: #a37c4b;
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "▾ ";
+        }
+
+        .faq-mini p {
+            margin: 0.5rem 0 0.2rem 1rem;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7b8799;
+            border-top: 1px solid #e4e9f0;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero {
+                padding: 2.8rem 1.2rem 2rem 1.2rem;
+            }
+
+            .container {
+                padding: 1.5rem 0.8rem 3rem 0.8rem;
+            }
+
+            .article-card {
+                padding: 1.5rem 1rem 2rem 1rem;
+            }
+
+            .article-title {
+                font-size: 1.35rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .dropcap {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>再次遇见 · 华体会</h1>
+    <div class="sub">收藏是一份安静的期待，重访是一种熟悉的温度。</div>
+</div>
+
+<div class="container">
+    <div class="article-card">
+
+        <div class="article-title">把喜欢的地方，留在触手可及处</div>
+        <div class="meta-line">
+            <span>随记</span>
+            <span>阅读约 3 分钟</span>
+        </div>
+
+        <p><span class="dropcap">有</span>时我们浏览一个站点，并不总是为了某个确定的答案。更像是在熟悉的角落里，确认一些信息，或只是看看它是否还是记忆中的样子。<strong>华体会</strong> 便是这样一个我愿意偶尔回来看看的地方——不喧哗，内容扎实，节奏从容。</p>
+
+        <p>我习惯把真正值得反复使用的站点放进浏览器的书签栏，而不是让它们淹没在历史记录里。<a href="https://index-app-hth.com.cn" class="highlight-link">华体会</a> 是我较早收藏的一个。它的界面干净，没有那种铺天盖地的弹窗或浮夸的引导，每次打开都像推开一扇熟悉的门，里面的陈设依旧妥帖。</p>
+
+        <div class="inset-quote">
+            <p>“真正好的工具或信息源，不会催促你，它们只是安静地在那里，等你需要时自然想起。” </p>
+            <div class="quote-source">—— 一位长期读者的笔记</div>
+        </div>
+
+        <p>持续关注一个站点，有时候是因为它提供了稳定的价值，有时候只是因为它陪伴过某段时光。<strong>华体会</strong> 对我而言兼而有之。它的内容方向比较聚焦，没有为了流量而偏离原本的脉络。在信息过载的今天，这种克制本身就是一种可贵的品质。</p>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>📌 稳定的内容节奏</strong>
+                <span>更新频率平实，不搞信息轰炸，每篇都有可读性。</span>
+            </div>
+            <div class="feature-item">
+                <strong>🔖 友好的收藏体验</strong>
+                <span>页面结构清晰，再次访问时能快速找到重点。</span>
+            </div>
+            <div class="feature-item">
+                <strong>🧭 清晰的导航逻辑</strong>
+                <span>无论从哪一页进入，都不容易迷失方向。</span>
+            </div>
+            <div class="feature-item">
+                <strong>💡 适度的交互提示</strong>
+                <span>引导温和，不干扰阅读主线，保持专注。</span>
+            </div>
+        </div>
+
+        <p>如果你也属于那种喜欢把好站点“存起来”慢慢看的人，或许可以尝试把 <a href="https://index-app-hth.com.cn" class="highlight-link">华体会</a> 放进你的收藏夹。不必每天打开，但当你需要那份扎实的内容感时，它就在那里。</p>
+
+        <div class="visit-note">
+            <strong>再次访问的句子：</strong> 如果你已经有一阵子没有来，不妨今天点开书签，重新感受一下——好的站点，经得起时间的间隔。
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>华体会 的内容适合哪些人？</summary>
+                <p>适合喜欢深度阅读、关注稳定信息源、不希望被过度营销打扰的浏览者。内容偏向实用与思考，节奏舒缓。</p>
+            </details>
+            <details>
+                <summary>如何持续关注而不遗漏更新？</summary>
+                <p>可以定期访问（比如每周一次），或使用浏览器的书签功能。华体会 的更新频率有规律，不需要频繁刷新。</p>
+            </details>
+            <details>
+                <summary>页面风格会经常变化吗？</summary>
+                <p>整体风格保持统一，细节上会有优化。这也是为什么它适合收藏——熟悉感不会轻易被打断。</p>
+            </details>
+        </div>
+
+    </div>
+
+    <div class="footer-note">
+        <span>保持温和的链接，收藏那些值得重访的地方。</span>
+    </div>
+</div>
+
+</body>
+</html>
